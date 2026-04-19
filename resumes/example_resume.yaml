@@ -1,0 +1,34 @@
+filename: CV_Alex_Dupont_Event_Manager
+lang: fr
+common_file: example_common
+role_title: Responsable de Projets Événementiels
+skills:
+  Logistique: Gestion de flux, Sécurité ERP, Coordination traiteurs
+  Communication: Relations presse, Social Media, Design de stands
+  Langues: Anglais (C1 - Courant), Espagnol (B2 - Intermédiaire)
+experiences:
+  - title: Chef de Projet Senior
+    company: Gastronomy Events
+    dates: Mars 2021 - Aujourd'hui
+    tasks:
+      - context: Organisation du salon annuel de la Gastronomie Lyonnaise
+        stack: "Budget : 150k€, 40 prestataires"
+        bullets:
+          - Négociation des contrats avec les fournisseurs locaux (réduction
+            des coûts de 15%).
+          - Supervision d'une équipe de 10 hôtes et hôtesses durant
+            l'événement.
+          - Gestion de la logistique pour l'accueil de 5000 visiteurs sur deux
+            jours.
+  - title: Assistant Événementiel
+    company: Mairie de Lyon
+    dates: Septembre 2019 - Février 2021
+    tasks:
+      - context: Soutien à l'organisation de la Fête des Lumières
+        stack: Coordination terrain
+        bullets:
+          - Mise en place de la signalétique éco-responsable sur les sites
+            historiques.
+          - Rédaction des dossiers de sécurité pour la Préfecture.
+          - Collaboration avec les équipes de communication pour la promotion de
+            l'événement sur les réseaux sociaux.

@@ -19,6 +19,7 @@ repos:
     hooks:
       - id: check-yaml      # Verifies YAML syntax
       - id: check-added-large-files
+        args: ['--maxkb=1024'] # Increase limit to 1MB
       - id: end-of-file-fixer
       - id: trailing-whitespace
 

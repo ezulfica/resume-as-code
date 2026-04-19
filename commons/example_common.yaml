@@ -1,0 +1,14 @@
+contact:
+  name: "Alex Dupont"
+  email: "alex.dupont@exemple.com"
+  phone: "01 02 03 04 05"
+  site: "www.monsite-evenementiel.fr"
+  linkedin: "linkedin.com/in/alex-dupont"
+  city: "Lyon, France"
+
+label_skills: "DOMAINES D'EXPERTISE"
+label_experiences: "PARCOURS PROFESSIONNEL"
+
+hobbies:
+  title: "LOISIRS"
+  content: "Apiculture urbaine"
