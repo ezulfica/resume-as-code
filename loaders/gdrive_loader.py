@@ -57,7 +57,9 @@ class GDriveConnector:
         Returns True if successful, False otherwise.
         """
         # 1. Ensure the local directory exists
-        os.makedirs(os.path.dirname(local_path), exist_ok=True)
+        target_dir = os.path.dirname(local_path)
+        if target_dir:  # On ne crée le dossier que si le chemin en contient un
+            os.makedirs(target_dir, exist_ok=True)
 
         # 2. Search for the file in GDrive
         query = f"name = '{filename}' and trashed = false"

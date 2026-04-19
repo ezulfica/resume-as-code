@@ -14,9 +14,13 @@ def mock_service():
 
 @pytest.fixture
 def connector(mock_service):
-    with patch("google.oauth2.service_account.Credentials.from_service_account_file"):
-        with patch("os.path.exists", return_value=True):
-            return GDriveConnector()
+    # On mocke l'existence du fichier ET la variable d'environnement
+    with patch.dict(
+        os.environ, {"GOOGLE_APPLICATION_CREDENTIALS": "fake_path.json"}
+    ), patch(
+        "google.oauth2.service_account.Credentials.from_service_account_file"
+    ), patch("os.path.exists", return_value=True):
+        return GDriveConnector()
 
 
 def test_download_file_by_name_not_found(connector, mock_service):
@@ -56,24 +60,17 @@ def test_download_file_by_name_success(connector, mock_service, tmp_path):
 
 
 def test_retry_logic_on_http_error(connector, mock_service):
-    """Verifies that Tenacity retry logic is triggered on HttpError."""
     from googleapiclient.errors import HttpError
 
-    # 1. Setup Mock for HttpError
-    mock_resp = MagicMock()
-    mock_resp.status = 500
-    mock_resp.reason = "Internal Server Error"
+    # Setup de l'erreur
+    mock_resp = MagicMock(status=500, reason="Internal Server Error")
     err = HttpError(resp=mock_resp, content=b"Error")
 
-    # 2. Attach the error
-    mock_list = mock_service.files.return_value.list
-    mock_list.side_effect = err
+    # On cible exactement la méthode list() du service mocké
+    mock_service.files().list.side_effect = err
 
-    test_path = "temp_dir/test.docx"
-
-    # 3. We EXPECT the error to be raised after all retries are exhausted
     with pytest.raises(HttpError):
-        connector.download_file_by_name("test.docx", test_path)
+        connector.download_file_by_name("test.docx", "path.docx")
 
-    # 4. If we reached here, it means it retried 3 times (stop_after_attempt)
-    assert mock_list.call_count == 3
+    # Vérifie que la méthode list a bien été appelée 3 fois (grâce à tenacity)
+    assert mock_service.files().list.call_count == 3
