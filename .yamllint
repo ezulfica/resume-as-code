@@ -1,0 +1,35 @@
+extends: default
+
+rules:
+  line-length:
+    max: 100
+    level: warning
+
+  indentation:
+    spaces: 2
+    indent-sequences: consistent
+
+  truthy:
+    allowed-values: ['true', 'false']
+    check-keys: false
+
+  comments:
+    min-spaces-from-content: 1
+
+  document-start:
+    present: false
+
+  empty-lines:
+    max: 2
+    max-start: 0
+    max-end: 0
+
+  trailing-spaces: enable
+
+  colons:
+    max-spaces-before: 0
+    max-spaces-after: 1
+
+  commas:
+    max-spaces-before: 0
+    min-spaces-after: 1

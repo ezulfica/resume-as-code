@@ -1,0 +1,35 @@
+# === Python & Environment ===
+__pycache__/
+.pytest_cache/
+.venv/
+*.py[cod]
+*$py.class
+.ruff_cache/
+
+# === Project Configuration ===
+.env
+.config
+config.yml
+
+# === Personal Data (CVs & Configs) ===
+# Ignore all personal content but keep the folder structure
+commons/*.yaml
+commons/*.yml
+resumes/*.yaml
+resumes/*.yml
+
+# === Output ===
+dist/
+
+# === Secrets & Auth ===
+# NEVER commit service account keys or sensitive JSONs
+secrets/*
+
+# === Temporary & Test Files ===
+temp_dir/
+.tmp/
+
+# Allow example files for reference
+!commons/example_common.yaml
+!resumes/example_resume.yaml
+!secrets/service_account.json.example
