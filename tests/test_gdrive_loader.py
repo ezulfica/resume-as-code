@@ -15,11 +15,11 @@ def mock_service():
 @pytest.fixture
 def connector(mock_service):
     # On mocke l'existence du fichier ET la variable d'environnement
-    with patch.dict(
-        os.environ, {"GOOGLE_APPLICATION_CREDENTIALS": "fake_path.json"}
-    ), patch(
-        "google.oauth2.service_account.Credentials.from_service_account_file"
-    ), patch("os.path.exists", return_value=True):
+    with (
+        patch.dict(os.environ, {"GOOGLE_APPLICATION_CREDENTIALS": "fake_path.json"}),
+        patch("google.oauth2.service_account.Credentials.from_service_account_file"),
+        patch("os.path.exists", return_value=True),
+    ):
         return GDriveConnector()
 
 
