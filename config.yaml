@@ -1,0 +1,16 @@
+# Template retrieval strategy
+template:
+  source: "{{ env.TEMPLATE_SOURCE | default('local') }}"         # options: gdrive | onedrive | local
+  filename: "resume_template.docx"
+  local_path: "templates/resume_template.docx"
+
+# Directory structure
+paths:
+  configs: "commons"
+  resumes: "resumes"
+  output: "dist"
+
+# Generation settings
+generation:
+  default_lang: "fr"
+  output_format: "docx"
